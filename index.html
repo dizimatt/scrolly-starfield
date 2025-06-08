@@ -192,7 +192,7 @@
                         originalZ: z,
                         size: 2,
                         color: `hsl(${200 + Math.sin(ring * 0.5) * 40}, 80%, 80%)`,
-                        twinkle: (ring * starsInRing + star) * 0.1
+                        twinkle: 0 // (ring * starsInRing + star) * 0.1
                     });
                 }
             }
@@ -288,7 +288,7 @@
                 const screenX = starSphere.x + rotated.x * scale;
                 const screenY = starSphere.y + rotated.y * scale;
                 
-                star.twinkle += 0.1;
+                star.twinkle += (star.twinkle > 0) ? 0.1 : 0;
                 const twinkleEffect = (Math.sin(star.twinkle) + 1) * 0.3 + 0.4;
                 const size = star.size * scale * twinkleEffect;
                 
