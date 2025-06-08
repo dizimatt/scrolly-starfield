@@ -39,6 +39,8 @@
             cloudParticles: [],
             rotation: { x: 0, y: 0, z: 0 }
         };
+        const backgroundStars = [];
+
 
         
         // Set canvas to full screen
@@ -46,7 +48,7 @@
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             starSphere.radius = canvas.width * 0.09;
-            console.log("starSphere.radius:", starSphere.radius);
+            generateBackgroundStars();
             generateSphereStars();
             generateCloudParticles();
         }
@@ -67,7 +69,6 @@
         
         // Add some background parallax stars and regular sparkles
         const sparkles = [];
-        const backgroundStars = [];
         
         // Generate background stars for parallax effect
         function generateBackgroundStars() {
@@ -91,7 +92,7 @@
         function updateBackgroundStars() {
             backgroundStars.forEach(star => {
                 // Parallax scrolling from right to left based on depth
-                const parallaxSpeed = (1 / star.z) * 0.5;
+                const parallaxSpeed = (1 / star.z) * 8;
                 star.x -= parallaxSpeed;
                 
                 // Wrap around - when star exits left, re-enter from right
@@ -472,9 +473,11 @@
         generateSphereStars();
         generateCloudParticles();
         
+        /*
         window.addEventListener('resize', () => {
             generateBackgroundStars();
         });
+        */
         
         // Start the animation
         enhancedAnimate();
